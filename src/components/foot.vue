@@ -1,8 +1,7 @@
 <template class="navbar navbar-expand-lg navbar-dark bg-dark">
 <div class="foot" >
     <p>© 2023 My Todo App</p>
-    <p>All rights reserved.</p>
-
+    <p>Developed by Mahad Idrees Khan 💖</p>
 </div>
 </template>
 <style>
