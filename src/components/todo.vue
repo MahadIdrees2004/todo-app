@@ -4,17 +4,32 @@
         <ul>
             <p v-if="todo.length==1">No Task Pending</p>
             <li v-for="item in todo">
-                <h4>{{ item.title }}</h4>
-                <p>{{ item.description }}</p>
-                <p style="color: blue;">Status: {{ item.completed ? 'Completed' : 'Pending' }}</p>
-                <div v-if="!item.completed">
-                <button class="status" @click="item.completed=!item.completed">Mark as Completed</button>
-                </div>
-                <div v-else="item.completed">
-                     <button class="status" @click="item.completed=!item.completed">Mark as Pending</button>
-                </div>
-                <button class="del" @click="del(item)">Delete</button>
-                <button class="upd" @click="updat(item)">Update</button>
+                <table class="outer">
+                    <tr>
+                        <td>
+                            <table class="inner">
+                                <tr>
+                                    <td><strong>Title:&nbsp</strong>
+                                        {{ item.title }}</td>
+                                    <td>
+                                    <p style="color: blue;">Status: {{ item.completed ? 'Completed' : 'Pending' }}</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                                                        <td><strong>Description:&nbsp</strong>{{ item.description }}</td>
+  </tr>
+                            </table>
+                        </td>
+
+                <td style="text-align: right; padding-right: 20px; height: 100%;">
+                <button id="123" v-if="item.completed" class="status" @click="item.completed=!item.completed">Mark as Pending</button>
+                <button id="123" v-else="!item.completed" class="status" @click="item.completed=!item.completed">Mark as Completed</button>
+                <button id="123" class="del" @click="del(item)">Delete</button>
+                <button id="123" class="upd" @click="updat(item)">Update</button>
+                        </td>
+                    </tr>
+                </table>
+
             </li>
         
         </ul>
@@ -43,71 +58,86 @@ defineProps(
 )
     </script>
     <style scoped>
+    .inner td:first-child {
+        width: 250px;
+        min-width: 250px;
+        max-width: 250px;
+        vertical-align: top;
+        word-break: break-word;
+    }
+    .inner td:nth-child(2) {
+        width: 180px;
+        min-width: 180px;
+        max-width: 180px;
+        vertical-align: top;
+        word-break: break-word;
+    }
+    </style>
+<style scoped>
 .Todo {
-    
-    background-color: #f8f9fa;
+    width: 100%;
+    height: 100%;
     padding: 20px;
-    border-radius: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 40px auto;
-    max-width: 600px;
+    background-color: #f0f0f0;
 }
-.Todo h2 {
-    color: #343a40;
-}
-.Todo ul {
+ul {
     list-style-type: none;
     padding: 0;
 }
-.Todo li {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
+li {
     background-color: #ffffff;
-}
-.Todo li h4 {
-    margin: 0;
-    color: #495057;
-}
-.Todo li p {
-    margin: 5px 0;
-}
-.Todo li p:last-child {
-    font-weight: bold;
-}
-.Todo p {
-    color: #6c757d;
-}
-.Todo p:last-child {
-    color: #28a745;
-}
-.Todo p:empty {
-    display: none;
-}
-.Todo p:empty::before {
-    content: "No description available.";
-    color: #6c757d;
-}
-.Todo button {
-    margin-right: 10px;
-    padding: 5px 10px;
-    border: none;
+    border: 1px solid #dddddd;
+    margin: 10px 0;
+    padding: 5px;
     border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.outer {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+.inner {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+.status {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
 }
-.Todo button.status {
-    background-color: #28a745;
+.del {
+    background-color: #f44336; /* Red */
+    border: none;
     color: white;
-    margin-bottom: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
-.Todo button.del {
-    background-color: #dc3545;
+.upd {
+    background-color: #008CBA; /* Blue */
+    border: none;
     color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
-.Todo button.upd {
-    background-color: #007bff;
-    color: white;
 
-}
 </style>
+style
