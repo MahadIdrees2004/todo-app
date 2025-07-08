@@ -1,8 +1,8 @@
 <template>
     <div class="Todo" >
         <h2>Todo List</h2>
+        <p v-if="todo.length==1">No Task Pending</p>
         <ul>
-            <p v-if="todo.length==1">No Task Pending</p>
             <li v-for="item in todo">
                 <table class="outer">
                     <tr>
@@ -16,22 +16,20 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                                                        <td><strong>Description:&nbsp</strong>{{ item.description }}</td>
-  </tr>
+                                    <td><strong>Description:&nbsp</strong>{{ item.description }}</td>
+                                </tr>
                             </table>
                         </td>
 
-                <td style="text-align: right; padding-right: 20px; height: 100%;">
-                <button id="123" v-if="item.completed" class="status" @click="statusfunc(item)">Mark as Pending</button>
-                <button id="123" v-else="!item.completed" class="status" @click="statusfunc(item)">Mark as Completed</button>
-                <button id="123" class="del" @click="del(item)">Delete</button>
-                <button id="123" class="upd" @click="updat(item)">Update</button>
+                        <td style="text-align: right; padding-right: 20px; height: 100%;">
+                            <button id="123" v-if="item.completed" class="status" @click="statusfunc(item)">Mark as Pending</button>
+                            <button id="123" v-else class="status" @click="statusfunc(item)">Mark as Completed</button>
+                            <button id="123" class="del" @click="del(item)">Delete</button>
+                            <button id="123" class="upd" @click="updat(item)">Update</button>
                         </td>
                     </tr>
                 </table>
-
             </li>
-        
         </ul>
         <p v-if="todo.length === 0">No todos available.</p>
         </div>
@@ -61,23 +59,21 @@ defineProps(
     
 )
     </script>
-    <style scoped>
-    .inner td:first-child {
-        width: 250px;
-        min-width: 250px;
-        max-width: 250px;
-        vertical-align: top;
-        word-break: break-word;
-    }
-    .inner td:nth-child(2) {
-        width: 180px;
-        min-width: 180px;
-        max-width: 180px;
-        vertical-align: top;
-        word-break: break-word;
-    }
-    </style>
 <style scoped>
+.inner td:first-child {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+    vertical-align: top;
+    word-break: break-word;
+}
+.inner td:nth-child(2) {
+    width: 180px;
+    min-width: 180px;
+    max-width: 180px;
+    vertical-align: top;
+    word-break: break-word;
+}
 .Todo {
     width: 100%;
     height: 100%;
@@ -142,6 +138,5 @@ li {
     margin: 4px 2px;
     cursor: pointer;
 }
-
 </style>
-style
+
